@@ -1,3 +1,24 @@
-.someClass {
+.affair {
+    display: flex;
+    width: 250px;
 
 }
+
+.affairId {
+    width: 10px;
+    margin-right: 10px;
+}
+
+.affairName {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.affairPriority {
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+
+

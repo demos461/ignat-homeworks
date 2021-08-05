@@ -1,7 +1,21 @@
-.someClass {
+.form {
+
+}
+
+.form input, .form button {
+    margin-right: 5px;
+}
+
+.input {
+    border: 2px solid black;
 
 }
 
 .error {
-    border: 1px solid red;
+    border: 2px solid red;
+}
+
+.errorMessage {
+    color: red;
+    height: 25px;
 }

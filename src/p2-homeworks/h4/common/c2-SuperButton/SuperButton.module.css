@@ -11,6 +11,7 @@
 }
 
 .default:hover {
+    cursor: pointer;
     color: #ffffff;
     background: #f6b93b;
     border-color: #f6b93b;
@@ -18,7 +19,9 @@
 }
 
 .default:disabled {
+    cursor: default;
     background-color: darkgray;
+    border: 2px solid darkgray;
     color: gray;
 }
 

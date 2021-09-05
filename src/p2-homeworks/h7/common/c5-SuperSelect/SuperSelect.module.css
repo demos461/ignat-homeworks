@@ -1,0 +1,14 @@
+.select {
+    text-align-last: center;
+    outline: none;
+    border: 2px solid #494949;
+    padding: 5px;
+    margin-left: 10px;
+    width: 120px;
+    font-size: 18px;
+}
+
+.option:checked {
+    background-color: #f6b93b;
+    color: white;
+}

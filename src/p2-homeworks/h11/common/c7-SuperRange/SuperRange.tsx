@@ -1,40 +1,44 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
+import {Slider} from '@mui/material';
+import React from 'react'
 import s from './SuperRange.module.css'
+import {SliderProps} from "@mui/material/Slider/Slider";
 
-// тип пропсов обычного инпута
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+// тип пропсов обычного слайдера
+type DefaultSliderProps = SliderProps
 
-// здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
-// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
-type SuperRangePropsType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
-    onChangeRange?: (value: number) => void
+// здесь мы говорим что у нашего слайдера будут такие же пропсы как у обычного слайдера
+// (чтоб не писать value: string, onChange: ...; они уже все описаны в SliderProps
+type SuperRangePropsType = DefaultSliderProps & { // и + ещё пропсы которых нет в стандартном слайдере
+    onChangeRange?: (value: number | number[]) => void
+    value: number | number[]
 };
 
 const SuperRange: React.FC<SuperRangePropsType> = (
     {
-        type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
+
         onChange, onChangeRange,
         className,
+        value,
 
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(e) // сохраняем старую функциональность
+    const onChangeCallback = (e:  Event, newValue: number | number[], activeThumb: number) => {
+        onChange && onChange(e, newValue, activeThumb) // сохраняем старую функциональность
 
-        onChangeRange && onChangeRange(+e.currentTarget.value)
+        onChangeRange && onChangeRange(newValue)
     }
 
     const finalRangeClassName = `${s.range} ${className ? className : ''}`
 
     return (
         <>
-            <input
-                type={'range'}
+            <Slider
+                value={value}
                 onChange={onChangeCallback}
                 className={finalRangeClassName}
 
-                {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                {...restProps} // отдаём слайдеру остальные пропсы если они есть (value например там внутри)
             />
         </>
     )

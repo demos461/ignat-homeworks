@@ -4,10 +4,14 @@ import HW2 from '../../h2/HW2'
 import HW3 from '../../h3/HW3'
 import HW4 from '../../h4/HW4'
 import HW6 from '../../h6/HW6';
+import {useSelector} from "react-redux";
+import {AppStoreType} from "../../h10/bll/store";
+import s from "./PreJunior.module.css";
 
 function PreJunior() {
+    const theme = useSelector<AppStoreType, string>((state) => state.theme.theme);
     return (
-        <div>
+        <div className={s[theme]}>
             <HW1/>
             <HW2/>
             <HW3/>

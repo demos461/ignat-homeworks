@@ -1,5 +1,7 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
 import s from './SuperInputText.module.css'
+import {useSelector} from "react-redux";
+import {AppStoreType} from "../../../h10/bll/store";
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -24,6 +26,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
+    const theme = useSelector<AppStoreType, string>((state) => state.theme.theme)
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange
         && onChange(e) // то передать ему е (поскольку onChange не обязателен)
@@ -39,7 +42,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
     }
 
     const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-    const finalInputClassName = `${error? s.errorInput : ''} ${className? className : s.superInput}`
+    const finalInputClassName = `${error? s.errorInput : ''} ${className? className : `${s.default} ${s[theme]}`}`
 
     return (
         <>

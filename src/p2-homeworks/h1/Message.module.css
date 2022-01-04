@@ -60,3 +60,16 @@
     text-align: end;
     color: #8d8d8d;
 }
+
+.dark {
+    background-color: #ffffff;
+    color: black;
+}
+
+.dark:before {
+    background-color: #ffffff;
+}
+
+.dark:after {
+    background-color: dimgray;
+}

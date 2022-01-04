@@ -9,7 +9,6 @@
     display: inline-block;
     transition: all 0.4s ease 0s;
 }
-
 .default:hover {
     cursor: pointer;
     color: #ffffff;
@@ -24,6 +23,20 @@
     border: 2px solid darkgray;
     color: gray;
 }
+.dark {
+    background: #f6b93b;
+    color: #ffffff;
+    border-color: #f6b93b;
+}
+
+.dark:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background: #494949;
+    border-color: #494949;
+    transition: all 0.4s ease 0s;
+}
+
 
 .red {
     background: red;
